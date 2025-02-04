@@ -18,6 +18,7 @@ class HomeViewModel: ObservableObject {
     }
 
     func reduce(_ action: Action) {
+        print("Received action: \(action)")
         switch action {
         case .getRecipes:
             Task { await getRecipes() }
@@ -91,7 +92,6 @@ class HomeViewModel: ObservableObject {
 }
 
 extension HomeViewModel {
-
     struct State {
         var recipeModel: RecipeModel?
         var isLoading: Bool = true

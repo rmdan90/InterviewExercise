@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @StateObject var viewModel: HomeViewModel
     @Namespace var namespace
+    @EnvironmentObject var appDependencies: AppDependencies
 
     init(viewModel: HomeViewModel) {
         self._viewModel = StateObject(wrappedValue: viewModel)
@@ -50,19 +51,19 @@ struct HomeView: View {
         .padding()
         .scrollClipDisabled()
         .onAppear {
-            viewModel.reduce(.getRecipes)
+            if viewModel.state.recipeModel?.recipes?.isEmpty ?? true {
+                viewModel.reduce(.getRecipes)
+            }
         }
-        .alert(
-            viewModel.state.error ?? "Something went wrong",
+        .errorAlert(
+            errorMessage: viewModel.state.error ?? "Something went wrong",
             isPresented: $viewModel.state.showErrorAlert,
-            actions: {
-                Button("Cancel", role: .cancel) {
-                    viewModel.reduce(.dismissError)
-                }
-                Button("Retry", role: .destructive) {
-                    viewModel.reduce(.dismissError)
-                    viewModel.reduce(.getRecipes)
-                }
+            retryAction: {
+                viewModel.reduce(.dismissError)
+                viewModel.reduce(.getRecipes)
+            },
+            cancelAction: {
+                viewModel.reduce(.dismissError)
             }
         )
         .refreshable {
@@ -80,10 +81,16 @@ struct HomeView: View {
             }
         }
         .navigationDestination(for: Recipe.self) { recipe in
-            RecipeDetailsView(recipe: recipe)
-                .navigationTransition(.zoom(sourceID: recipe.id, in: namespace))
-
+            RecipeDetailsView(
+                viewModel: RecipeDetailsViewModel(
+                    input: RecipeDetailsViewModel.Input(recipe: recipe),
+                    dependencies: RecipeDetailsViewModel
+                        .Dependencies(networkService: appDependencies.networkService)
+                )
+            )
+            .navigationTransition(.zoom(sourceID: recipe.id, in: namespace))
         }
+        .navigationTitle("Recipes")
     }
 }
 

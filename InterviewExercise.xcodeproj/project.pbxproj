@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		59989C8F2D515F0E00A577CF /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 59989C8E2D515F0E00A577CF /* Kingfisher */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		59989C592D513F1000A577CF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +31,7 @@
 		59989C482D513F0E00A577CF /* InterviewExercise.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InterviewExercise.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		59989C582D513F1000A577CF /* InterviewExerciseTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InterviewExerciseTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		59989C622D513F1000A577CF /* InterviewExerciseUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = InterviewExerciseUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		59BB5BDE2D5297DD005B0C20 /* InterviewExercise.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = InterviewExercise.xctestplan; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -52,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				59989C8F2D515F0E00A577CF /* Kingfisher in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -75,6 +81,7 @@
 		59989C3F2D513F0E00A577CF = {
 			isa = PBXGroup;
 			children = (
+				59BB5BDE2D5297DD005B0C20 /* InterviewExercise.xctestplan */,
 				59989C4A2D513F0E00A577CF /* InterviewExercise */,
 				59989C5B2D513F1000A577CF /* InterviewExerciseTests */,
 				59989C652D513F1000A577CF /* InterviewExerciseUITests */,
@@ -112,6 +119,7 @@
 			);
 			name = InterviewExercise;
 			packageProductDependencies = (
+				59989C8E2D515F0E00A577CF /* Kingfisher */,
 			);
 			productName = InterviewExercise;
 			productReference = 59989C482D513F0E00A577CF /* InterviewExercise.app */;
@@ -195,6 +203,9 @@
 			);
 			mainGroup = 59989C3F2D513F0E00A577CF;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				59989C8D2D515F0E00A577CF /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 59989C492D513F0E00A577CF /* Products */;
 			projectDirPath = "";
@@ -558,6 +569,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		59989C8D2D515F0E00A577CF /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 8.1.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		59989C8E2D515F0E00A577CF /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 59989C8D2D515F0E00A577CF /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 59989C402D513F0E00A577CF /* Project object */;
 }
