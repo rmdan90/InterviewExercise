@@ -14,6 +14,9 @@ struct RecipeCardView: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             KFImage.url(URL(string: recipe.image ?? ""))
+                .placeholder({ progress in
+                    ProgressView()
+                })
                 .loadDiskFileSynchronously()
                 .fade(duration: 0.25)
                 .resizable()
