@@ -20,10 +20,12 @@ struct HomeView: View {
         VStack {
             if viewModel.state.shouldShowSearchResults && (viewModel.state.searchResults?.recipes?.isEmpty ?? true) {
                 Text("No results found")
+                    .accessibilityIdentifier("noResultsLabel")
             }
 
             if viewModel.state.isLoading {
                 ProgressView()
+                    .accessibilityIdentifier("loadingIndicator")
             } else {
                 ScrollView {
                     LazyVStack {
@@ -38,6 +40,7 @@ struct HomeView: View {
                                         id: recipe.id,
                                         in: namespace
                                     )
+                                    .accessibilityIdentifier("recipeCard_\(recipe.id ?? -1)")
                             }
                         }
                     }
@@ -72,6 +75,7 @@ struct HomeView: View {
             }
         }
         .searchable(text: $viewModel.state.query)
+        .accessibilityIdentifier("searchBar")
         .onSubmit(of: .search) {
             viewModel.reduce(.searchRecipes)
         }
@@ -88,6 +92,7 @@ struct HomeView: View {
                         .Dependencies(networkService: appDependencies.networkService)
                 )
             )
+            .accessibilityIdentifier("recipeDetailsView")
             .navigationTransition(.zoom(sourceID: recipe.id, in: namespace))
         }
         .navigationTitle("Recipes")
