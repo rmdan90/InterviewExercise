@@ -13,6 +13,7 @@ This project loads and displays recipes using the DummyJSON API and follows the 
 - **pagination** for HomeView.
 - **search** recipe.
 - Enhances UI with **animations and styling**.
+- Transition animation to RecipeDetailsView
 
 ## Not Implemented (TO DO)
 - **Sorting** the Recipes list based on API data.
